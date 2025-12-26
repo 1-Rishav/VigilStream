@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Force options to have dark background in all browsers */
+select option {
+    background-color: #111;
+    color: white;
+}
