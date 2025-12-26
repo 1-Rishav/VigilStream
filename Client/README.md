@@ -1,131 +1,252 @@
 # VigilStream Client
 
-The frontend client for **VigilStream**, a secure video streaming application. Built with modern web technologies to provide a responsive, high-performance, and visually stunning user experience.
-
-## 🛠️ Tech Stack & Dependencies
-
-<div align="center">
-
-| Technology | Description |
-| :--- | :--- |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="40" height="40" /> **React** | Component-based UI library |
-| <img src="https://vitejs.dev/logo.svg" width="40" height="40" /> **Vite** | Next-generation frontend tooling |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" width="40" height="40" /> **Tailwind CSS** | Utility-first CSS framework (v4) |
-| <img src="https://redux.js.org/img/redux.svg" width="40" height="40" /> **Redux Toolkit** | State management for authentication |
-| <img src="https://framerusercontent.com/images/48oVuDyvqGdX0rW3w6j5X5tqE.png" width="40" height="40" /> **Framer Motion** | Production-ready animation library |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Socket_io_logo_icon.svg" width="40" height="40" /> **Socket.IO** | Real-time bi-directional event communication |
-
-</div>
-
-### Key Libraries
--   **React Router**: Dynamic client-side routing.
--   **Axios**: Promise-based HTTP client for API requests.
--   **React Toastify**: Sleek, customizable notification toasts.
--   **Lucide React**: Beautiful, consistent icon set.
--   **React Dropzone**: Drag-and-drop file upload handling.
--   **GSAP**: High-performance animations for complex sequences.
+A modern, responsive video streaming platform client built with React 19 and Vite. This application provides a sleek user interface for video management, user authentication, and admin controls.
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tech Stack
 
-A clean, modular architecture ensures scalability and maintainability.
+| Technology | Description | Logo |
+|------------|-------------|------|
+| **React 19** | UI Library | ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=white) |
+| **Vite 7** | Build Tool & Dev Server | ![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat&logo=vite&logoColor=white) |
+| **Tailwind CSS 4** | Utility-First CSS Framework | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white) |
+| **Redux Toolkit** | State Management | ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=flat&logo=redux&logoColor=white) |
+| **React Router 7** | Client-Side Routing | ![React Router](https://img.shields.io/badge/React_Router-7-CA4245?style=flat&logo=reactrouter&logoColor=white) |
+| **Axios** | HTTP Client | ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white) |
+| **Framer Motion** | Animation Library | ![Framer](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white) |
+| **GSAP** | Advanced Animations | ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat&logo=greensock&logoColor=white) |
+| **Socket.io Client** | Real-time Communication | ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat&logo=socketdotio&logoColor=white) |
+| **Lucide React** | Icon Library | ![Lucide](https://img.shields.io/badge/Lucide_Icons-F56565?style=flat&logo=lucide&logoColor=white) |
 
-```graphql
+---
+
+## 📁 Project Structure
+
+```
 Client/
-├── public/                 # Static assets
-├── src/
-│   ├── components/         # Reusable UI components
-│   │   ├── ui/             # Generic UI elements (Buttons, Inputs)
-│   │   ├── Navbar.jsx      # Main application navigation
-│   │   ├── VideoCard.jsx   # Video display unit
-│   │   ├── UploadModal.jsx # Drag-drop video uploader
-│   │   └── ...
-│   ├── hooks/              # Custom React hooks
-│   ├── lib/                # Utility libraries (Class merging, etc.)
-│   ├── pages/              # Main route views
-│   │   ├── Landing.jsx     # Public landing page
-│   │   ├── Login.jsx       # Authentication entry
-│   │   ├── Dashboard.jsx   # Main video feed & management
-│   │   └── AdminPage.jsx   # User management console
-│   ├── redux/              # Global state management
-│   │   ├── authSlice.js    # Auth state logic (Login/Logout)
-│   │   └── store.js        # Redux store configuration
-│   ├── utils/
-│   │   └── axios.js        # Configured Axios instance
-│   ├── App.jsx             # Main application root & routing
-│   ├── index.css           # Global styles & Tailwind imports
-│   └── main.jsx            # Application entry point
-├── .env                    # Environment variables
-├── package.json            # Project dependencies
-└── vite.config.js          # Vite configuration
+├── 📄 index.html                    # HTML entry point
+├── 📄 package.json                  # Dependencies & scripts
+├── 📄 vite.config.js                # Vite configuration
+├── 📄 README.md                     # This file
+│
+└── 📂 src/                          # Source code
+    ├── 📄 main.jsx                  # React entry point with Redux Provider
+    ├── 📄 App.jsx                   # Main app with routing configuration
+    ├── 📄 index.css                 # Global styles & Tailwind imports
+    │
+    ├── 📂 components/               # Reusable UI components
+    │   ├── 📄 Navbar.jsx            # Navigation bar with user menu
+    │   ├── 📄 RoleRoute.jsx         # Role-based access control wrapper
+    │   ├── 📄 UploadModal.jsx       # Video upload modal component
+    │   ├── 📄 VideoPlayerModal.jsx  # Video playback modal
+    │   ├── 📄 DeleteParamsModal.jsx # Delete confirmation modal
+    │   │
+    │   └── 📂 ui/                   # Base UI components (shadcn-style)
+    │       ├── 📄 button.jsx        # Reusable button component
+    │       └── 📄 input.jsx         # Reusable input component
+    │
+    ├── 📂 pages/                    # Page components (routes)
+    │   ├── 📄 Landing.jsx           # Public landing page
+    │   ├── 📄 Login.jsx             # User login page
+    │   ├── 📄 Register.jsx          # User registration page
+    │   ├── 📄 Dashboard.jsx         # Main dashboard (protected)
+    │   ├── 📄 Profile.jsx           # User profile page (protected)
+    │   └── 📄 AdminPage.jsx         # Admin panel (admin only)
+    │
+    ├── 📂 redux/                    # Redux state management
+    │   ├── 📄 store.js              # Redux store configuration
+    │   └── 📄 authSlice.js          # Authentication state slice
+    │
+    ├── 📂 hooks/                    # Custom React hooks
+    │
+    ├── 📂 lib/                      # Utility libraries
+    │   └── 📄 utils.js              # Helper functions (cn for classnames)
+    │
+    └── 📂 utils/                    # Utility functions
+        └── 📄 axios.js              # Axios instance with base config
 ```
 
-## 🧠 Core Features & Logic
+---
 
-### 1. Authentication (`redux/authSlice.js`)
-We use **Redux Toolkit** to manage the user's session state.
--   **Login/Register**: communicating with the backend to receive a JWT (stored in HTTP-Only cookies by the browser).
--   **Persistence**: The state persists across page reloads via local storage (for user info, not tokens).
--   **Protection**: `ProtectedRoute` components in `App.jsx` check this state to guard sensitive routes.
+## 🎯 Features
 
-### 2. Real-Time Dashboard (`pages/Dashboard.jsx`)
-The heart of the application.
--   **Socket.IO**: Connects to the backend server to listen for `video:progress` events.
--   **Visual Feedback**: Updates video cards instantly from "Processing" (with dynamic progress bars) to "Ready" without page reloads.
--   **Filtering**: Client-side filtering for "Safe" vs "Flagged" content.
+### 🔐 Authentication & Authorization
+- User registration and login
+- JWT-based authentication
+- Protected routes for authenticated users
+- Role-Based Access Control (RBAC) - Admin routes
 
-### 3. Video Management
--   **Upload**: `UploadModal` uses `react-dropzone` for file handling and `axios` for multipart form uploads.
--   **Playback**: `VideoPlayerModal` handles video streaming.
--   **Deletion**: Role-based logic (Admin vs Editor) controls visibility of delete actions.
+### 📹 Video Management
+- Video upload with drag & drop support (react-dropzone)
+- Video playback modal
+- Delete video functionality
 
-### 4. Admin Console (`pages/AdminPage.jsx`)
-A dedicated interface for system administrators.
--   **User Table**: Lists all registered users.
--   **Role Control**: Update user permissions (Viewer/Editor/Admin) instantly.
--   **Design**: Uses dark-themed UI components for a premium feel.
+### 🎨 UI/UX
+- Dark theme with modern glassmorphism design
+- Smooth animations with Framer Motion & GSAP
+- Responsive design for all screen sizes
+- Toast notifications (react-toastify)
+- Lucide icons throughout the app
+
+### 🔄 State Management
+- Centralized state with Redux Toolkit
+- Persistent authentication state
+
+### 🌐 Real-time Features
+- Socket.io integration for real-time updates
 
 ---
 
-## 🚀 How to Run Locally
+## 📦 Dependencies Breakdown
+
+### Core Dependencies
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `react` | ^19.2.3 | UI library |
+| `react-dom` | ^19.2.3 | React DOM rendering |
+| `react-router-dom` | ^7.11.0 | Client-side routing |
+
+### State Management
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `@reduxjs/toolkit` | ^2.11.2 | Redux state management |
+| `react-redux` | ^9.2.0 | React-Redux bindings |
+
+### Styling
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `tailwindcss` | ^4.1.18 | Utility-first CSS |
+| `@tailwindcss/vite` | ^4.1.18 | Vite plugin for Tailwind |
+| `clsx` | ^2.1.1 | Conditional classnames |
+| `tailwind-merge` | ^3.4.0 | Merge Tailwind classes |
+
+### Animation
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `framer-motion` | ^12.23.26 | React animations |
+| `gsap` | ^3.14.2 | Advanced animations |
+
+### HTTP & Real-time
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `axios` | ^1.13.2 | HTTP client |
+| `socket.io-client` | ^4.8.3 | WebSocket client |
+
+### UI Components
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `lucide-react` | ^0.562.0 | Icon library |
+| `react-dropzone` | ^14.3.8 | File upload drag & drop |
+| `react-toastify` | ^11.0.5 | Toast notifications |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
--   Ensure the **Server** is running on port `5000` (see server README).
 
-### Steps
+Make sure you have the following installed on your system:
 
-1.  **Navigate to Client Directory**
-    ```bash
-    cd Client
-    ```
+- **Node.js** (v18 or higher recommended)
+- **npm** or **yarn** package manager
 
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
+### Installation
 
-3.  **Start Development Server**
-    ```bash
-    npm run dev
-    ```
+1. **Navigate to the Client directory**
+   ```bash
+   cd Client
+   ```
 
-4.  **Access Application**
-    Open your browser and go to:
-    ```
-    http://localhost:5173
-    ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   or with yarn:
+   ```bash
+   yarn install
+   ```
 
-## 🎨 Styling System
-We utilize **Tailwind CSS v4** for a utility-first design approach.
--   **Theme**: Dark mode enabled by default (`bg-black`, `text-white`).
--   **Accents**: Primary colors used for calls-to-action (Buttons, Progress Bars).
--   **Animations**: `Framer Motion` handles page transitions and modal appearances.
+### Running the Application
 
-```css
-/* Example Custom Override in index.css */
-select option {
-    background-color: #111; /* Ensures dropdowns match the dark theme */
-    color: white;
-}
+#### Development Mode
+Start the development server with hot reload:
+```bash
+npm run dev
 ```
+The application will be available at `http://localhost:5173`
+
+#### Production Build
+Create an optimized production build:
+```bash
+npm run build
+```
+
+#### Preview Production Build
+Preview the production build locally:
+```bash
+npm run preview
+```
+
+#### Linting
+Run ESLint to check code quality:
+```bash
+npm run lint
+```
+
+---
+
+## ⚙️ Configuration
+
+### API Base URL
+The API base URL is configured in `src/utils/axios.js`:
+```javascript
+baseURL: 'http://localhost:5001/api'
+```
+Update this URL to match your backend server address.
+
+### Path Aliases
+The project uses `@` as an alias for the `src` directory:
+```javascript
+import Component from '@/components/Component'
+```
+
+---
+
+## 🔗 Routes
+
+| Route | Component | Access | Description |
+|-------|-----------|--------|-------------|
+| `/` | Landing | Public | Landing page |
+| `/login` | Login | Public | User login |
+| `/register` | Register | Public | User registration |
+| `/dashboard` | Dashboard | Protected | Main dashboard |
+| `/profile` | Profile | Protected | User profile |
+| `/admin` | AdminPage | Admin Only | Admin panel |
+
+---
+
+## 📝 Scripts
+
+| Script | Command | Description |
+|--------|---------|-------------|
+| `dev` | `vite` | Start development server |
+| `build` | `vite build` | Create production build |
+| `preview` | `vite preview` | Preview production build |
+| `lint` | `eslint . --ext js,jsx` | Run ESLint |
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is part of the VigilStream application.
