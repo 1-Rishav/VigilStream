@@ -10,6 +10,9 @@ const connectDB = require('./src/config/db');
 dotenv.config();
 
 const app = express();
+// Trust proxy is required for secure cookies to work behind a load balancer (Render, Heroku, etc.)
+app.set('trust proxy', 1);
+
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -24,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://vigil-stream-three.vercel.app"],
+    origin: process.env.CLIENT_URL || ["http://localhost:5173", "http://localhost:5174", "https://vigil-stream-three.vercel.app"],
     credentials: true,
 }));
 

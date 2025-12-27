@@ -18,7 +18,7 @@ exports.protect = async (req, res, next) => {
 
     // Make sure token exists
     if (!token) {
-        console.log("jai ho")
+        console.log("Auth Failed: No token found in cookies or headers");
         const error = new Error('Not authorized to access this route');
         error.statusCode = 401;
         return next(error);
