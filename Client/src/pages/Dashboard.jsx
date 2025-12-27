@@ -29,7 +29,7 @@ const Dashboard = () => {
         } else {
             fetchVideos();
             // Setup Socket
-            const newSocket = io('http://localhost:5000', {
+            const newSocket = io(/* 'http://localhost:5000' */ 'https://vigilstream.onrender.com', {
                 transports: ['websocket', 'polling'],
                 withCredentials: true
             });
