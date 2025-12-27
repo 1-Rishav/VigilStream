@@ -60,7 +60,7 @@ const Dashboard = () => {
 
     const fetchVideos = async () => {
         try {
-            const res = await axios.get('/videos');
+            const res = await axios.get('/videos',{},{withCredentials:true});
             setVideos(res.data.data);
         } catch (err) {
             console.error(err);

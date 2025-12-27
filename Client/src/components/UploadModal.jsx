@@ -53,7 +53,7 @@ const UploadModal = ({ onClose, onSuccess }) => {
         formData.append('category', category);
 
         try {
-            const res = await axios.post('/videos', formData, {
+            const res = await axios.post('/videos', formData, {withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
