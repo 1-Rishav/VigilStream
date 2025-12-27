@@ -8,7 +8,7 @@ const VideoPlayerModal = ({ video, onClose }) => {
     // Construct the stream URL. 
     // We point to our backend stream endpoint to enforce RBAC/Auth before redirecting to CDN.
     // Ensure this matches your backend URL structure.
-    const streamUrl = `http://localhost:5000/api/videos/${video._id}/stream`;
+    const streamUrl = `https://vigilstream.onrender.com/api/videos/${video._id}/stream`;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
